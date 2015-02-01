@@ -9,20 +9,19 @@ import android.content.Intent;
 public final class CommonUtilities {
 
     // give your server registration url here
-    static final String SERVER_URL = "http://sa.host22.com/register.php";
+    static final String SERVER_URL = "http://saaralpush.host22.com/register.php";
 
     // Google project id
-    static final String SENDER_ID = "1078980372605";
+    static final String SENDER_ID = "948917978587";
 
     /**
      * Tag used on log messages.
      */
-    static final String TAG = "GCM";
+    public static final String TAG = "GCM";
 
-    static final String DISPLAY_MESSAGE_ACTION =
-            "com.inspiron.tharun26.manusys.DISPLAY_MESSAGE";
+    public static final String DISPLAY_MESSAGE_ACTION ="com.inspiron.tharun26.saaral15.DISPLAY_MESSAGE";
 
-    static final String EXTRA_MESSAGE = "message";
+   public static final String EXTRA_MESSAGE = "message";
 
     /**
      * Notifies UI to display a message.

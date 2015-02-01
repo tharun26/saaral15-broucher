@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -25,7 +26,6 @@ GCM
     public static String name;
     public static String email;
     AsyncTask<Void, Void, Void> mRegisterTask;
-    BroadcastReceiver mHandleMessageReceiver = null;
 
 
     @Override
@@ -43,8 +43,8 @@ GCM
             //  return;
         }
 
-        name = "ManusysID";
-        email = "ManusysEmail";
+        name = "ManusysID56";
+        email = "ManusysEmail56";
 
         // Make sure the device has the proper dependencies.
         GCMRegistrar.checkDevice(this);
@@ -54,8 +54,7 @@ GCM
         GCMRegistrar.checkManifest(this);
 
 
-        registerReceiver(mHandleMessageReceiver, new IntentFilter(
-                DISPLAY_MESSAGE_ACTION));
+        registerReceiver(mHandleMessageReceiver, new IntentFilter(DISPLAY_MESSAGE_ACTION));
 
         // Get GCM registration id
         final String regId = GCMRegistrar.getRegistrationId(this);
@@ -63,16 +62,22 @@ GCM
         // Check if regid already presents
         if (regId.equals("")) {
             // Registration is not present, register now with GCM
-            GCMRegistrar.register(this, SENDER_ID);
+           GCMRegistrar.register(this, SENDER_ID);
+          // GCMRegistrar.unregister(this);
+           // Toast.makeText(getApplicationContext(), "Registered", Toast.LENGTH_LONG).show();
         } else {
+            // Device is already registered on GCM
             // Device is already registered on GCM
             if (GCMRegistrar.isRegisteredOnServer(this)) {
                 // Skips registration.
                 Toast.makeText(getApplicationContext(), "Already registered with GCM", Toast.LENGTH_LONG).show();
+
             } else {
-                // Try to register again, but not in the UI thread.
-                // It's also necessary to cancel the thread onDestroy(),
-                // hence the use of AsyncTask instead of a raw thread.
+                // Device is already registered on GCM
+
+                // Skips registration.
+                //Toast.makeText(getApplicationContext(), "Already registered with GCM", Toast.LENGTH_LONG).show();
+
                 final Context context = this;
                 mRegisterTask = new AsyncTask<Void, Void, Void>() {
 
@@ -94,7 +99,7 @@ GCM
             }
         }
 
-        mHandleMessageReceiver = new BroadcastReceiver() {
+        /*mHandleMessageReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String newMessage = intent.getExtras().getString(EXTRA_MESSAGE);
@@ -104,9 +109,30 @@ GCM
 
                 WakeLocker.release();
             }
-        };
+        };*/
 
-            }
+    }
+    private final BroadcastReceiver mHandleMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String newMessage = intent.getExtras().getString(EXTRA_MESSAGE);
+            // Waking up mobile if it is sleeping
+            WakeLocker.acquire(getApplicationContext());
+
+            /**
+             * Take appropriate action on this message
+             * depending upon your app requirement
+             * For now i am just displaying it on the screen
+             * */
+
+            // Showing received message
+//            lblMessage.append(newMessage + "\n");
+            Toast.makeText(getApplicationContext(), "New Message: " + newMessage, Toast.LENGTH_LONG).show();
+
+            // Releasing wake lock
+            WakeLocker.release();
+        }
+    };
 
 
     @Override
@@ -126,5 +152,18 @@ GCM
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    protected void onDestroy(){
+        super.onDestroy();
+        if (mRegisterTask != null) {
+            mRegisterTask.cancel(true);
+        }
+        try {
+            unregisterReceiver(mHandleMessageReceiver);
+            GCMRegistrar.onDestroy(this);
+        } catch (Exception e) {
+            Log.e("UnRegister Receiver Error", "> " + e.getMessage());
+        }
+
     }
 }

@@ -18,7 +18,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "notificationManager1";
-    private static final String TABLE_CONTACTS = "notification";
+    private static final String TABLE_CONTACTS = "notification1";
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "notification";
 
@@ -102,17 +102,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     // Updating single contact
-    /*public int updateContact(Contact contact) {
+    public int updateContact(NotificationDb contact) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_NAME, contact.getName());
+        values.put(KEY_NAME, contact.getNotification());
         //values.put(KEY_PH_NO, contact.getPhoneNumber());
 
         // updating row
         return db.update(TABLE_CONTACTS, values, KEY_ID + " = ?",
-                new String[] { String.valueOf(contact.getID()) });
-    }*/
+                new String[] { String.valueOf(contact.getId()) });
+    }
 
     // Deleting single contact
     public void deleteContact(NotificationDb contact) {

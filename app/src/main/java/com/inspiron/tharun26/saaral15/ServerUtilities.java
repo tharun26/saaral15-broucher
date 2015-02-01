@@ -20,8 +20,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 
-import static com.inspiron.tharun26.manusys.CommonUtilities.SERVER_URL;
-import static com.inspiron.tharun26.manusys.CommonUtilities.TAG;
+import static com.inspiron.tharun26.saaral15.CommonUtilities.SERVER_URL;
+import static com.inspiron.tharun26.saaral15.CommonUtilities.TAG;
 
 
 public final class ServerUtilities {
