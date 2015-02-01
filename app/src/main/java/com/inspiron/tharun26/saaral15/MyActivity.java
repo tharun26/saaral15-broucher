@@ -3,6 +3,7 @@ package com.inspiron.tharun26.saaral15;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.TypedArray;
@@ -13,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MyActivity extends Activity {
+public class MyActivity extends Activity   {
     /*
 GCM
  */
@@ -37,6 +39,7 @@ GCM
     public static String email;
     AsyncTask<Void, Void, Void> mRegisterTask;
 
+    ImageButton events;
 
     private ListView notification_list;
     public static String[] notification_title=new String[50] ;
@@ -86,7 +89,7 @@ GCM
             // Device is already registered on GCM
             if (GCMRegistrar.isRegisteredOnServer(this)) {
                 // Skips registration.
-                Toast.makeText(getApplicationContext(), "Already registered with GCM", Toast.LENGTH_LONG).show();
+       //         Toast.makeText(getApplicationContext(), "Already registered with GCM", Toast.LENGTH_LONG).show();
 
             } else {
                 // Device is already registered on GCM
@@ -127,7 +130,14 @@ GCM
             }
         };*/
 
-
+         events=(ImageButton)findViewById(R.id.events_btn);
+        events.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyActivity.this,Event.class);
+                startActivity(intent);
+            }
+        });
 
 
         ListView lv = (ListView)findViewById(R.id.list);  // your listview inside scrollview

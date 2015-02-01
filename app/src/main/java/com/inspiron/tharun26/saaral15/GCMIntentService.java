@@ -83,9 +83,9 @@ public class GCMIntentService extends GCMBaseIntentService {
 
         String message = intent.getExtras().getString("price");
 
-        if(message=="")
+        if(message==null)
         {
-         message="Welcome to Saaral'2015";
+         message="Welcome to Saaral 2015";
         }
 
          storedb(message);

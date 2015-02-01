@@ -3,14 +3,14 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
 
     android:descendantFocusability="blocksDescendants"
     android:paddingTop="15dp"
 
-    android:background="@drawable/rotract_background"
+    android:background="@drawable/home_background_selector"
     android:alpha=".9">
 
 
@@ -20,14 +20,14 @@
 
    <RelativeLayout
        android:layout_width="match_parent"
-       android:layout_height="wrap_content">
+       android:layout_height="match_parent">
 
 
 
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="210dp"
+        android:layout_height="wrap_content"
         android:id="@+id/layout"
 
         android:paddingLeft="15dp"
@@ -63,6 +63,7 @@
         android:weightSum="1">
 
         <ImageButton
+            android:id="@+id/events_btn"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:src="@drawable/party1"
@@ -111,7 +112,7 @@
             android:layout_below="@+id/textView3"
             android:id="@+id/list"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="320dp"
             android:choiceMode="singleChoice"
             android:divider="@null"
             android:dividerHeight="1dp"
@@ -155,7 +156,7 @@
                android:paddingLeft="50dp"
                android:background="@null"
                android:src="@drawable/id"
-               android:layout_alignParentBottom="true"
+               android:layout_alignTop="@+id/i2"
                android:layout_alignParentRight="true"
                android:layout_alignParentEnd="true" />
 
@@ -182,7 +183,7 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:textAppearance="?android:attr/textAppearanceMedium"
-               android:text="Developed"
+               android:text="Developers"
                android:id="@+id/textView5"
                android:layout_alignTop="@+id/textView4"
                android:layout_alignRight="@+id/i3"
