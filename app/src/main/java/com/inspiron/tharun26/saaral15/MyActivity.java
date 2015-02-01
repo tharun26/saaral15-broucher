@@ -27,6 +27,7 @@ import com.inspiron.tharun26.saaral15.NotificationItems;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MyActivity extends Activity {
     /*
 GCM
@@ -233,7 +234,7 @@ GCM
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.my, menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

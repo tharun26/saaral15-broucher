@@ -26,7 +26,7 @@
 
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="349dp"
+        android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="210dp"
         android:id="@+id/layout"
 
@@ -86,6 +86,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/updates"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/events"
@@ -119,6 +120,76 @@
             </ListView>
 
         </RelativeLayout>
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="100dp"
+            android:background="@drawable/home_background_selector"
+           android:layout_below="@id/updates"
+           >
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/phone"
+                android:padding="15dp"
+                android:alpha="1"
+                android:background="@null"
+                android:layout_centerVertical="true"
+                android:layout_alignRight="@+id/textView"
+                android:layout_alignEnd="@+id/textView" />
+           <ImageButton
+               android:id="@+id/i2"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+                android:padding="15dp"
+
+               android:src="@drawable/atom"
+               android:background="@null"
+               android:layout_centerVertical="true"
+               android:layout_centerHorizontal="true" />
+           <ImageButton
+               android:id="@+id/i3"
+               android:padding="15dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:paddingLeft="50dp"
+               android:background="@null"
+               android:src="@drawable/id"
+               android:layout_alignParentBottom="true"
+               android:layout_alignParentRight="true"
+               android:layout_alignParentEnd="true" />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textAppearance="?android:attr/textAppearanceMedium"
+               android:text="Contacts"
+               android:id="@+id/textView"
+               android:layout_alignParentBottom="true"
+               android:layout_alignParentLeft="true"
+               android:layout_alignParentStart="true" />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textAppearance="?android:attr/textAppearanceMedium"
+               android:text="Sponsors"
+               android:id="@+id/textView4"
+               android:layout_alignTop="@+id/textView"
+               android:layout_centerHorizontal="true" />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textAppearance="?android:attr/textAppearanceMedium"
+               android:text="Developed"
+               android:id="@+id/textView5"
+               android:layout_alignTop="@+id/textView4"
+               android:layout_alignRight="@+id/i3"
+               android:layout_alignEnd="@+id/i3" />
+
+
+       </RelativeLayout>
     </RelativeLayout>
 </ScrollView>
 
