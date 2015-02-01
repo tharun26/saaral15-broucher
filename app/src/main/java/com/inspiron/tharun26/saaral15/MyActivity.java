@@ -5,11 +5,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.TypedArray;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gcm.GCMRegistrar;
@@ -17,6 +19,11 @@ import com.google.android.gcm.GCMRegistrar;
 import static com.inspiron.tharun26.saaral15.CommonUtilities.DISPLAY_MESSAGE_ACTION;
 import static com.inspiron.tharun26.saaral15.CommonUtilities.SENDER_ID;
 import static com.inspiron.tharun26.saaral15.CommonUtilities.EXTRA_MESSAGE;
+
+import com.inspiron.tharun26.saaral15.NotificationItems;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyActivity extends Activity {
     /*
@@ -27,6 +34,12 @@ GCM
     public static String email;
     AsyncTask<Void, Void, Void> mRegisterTask;
 
+
+    private ListView notification_list;
+    public static String[] notification_title=new String[50] ;
+    private TypedArray notification_icons;
+    private ArrayList<NotificationItems> notification_Items;
+    private NotificationListAdapter notification_adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +123,53 @@ GCM
                 WakeLocker.release();
             }
         };*/
+
+
+        notification_Items = new ArrayList<NotificationItems>();
+/*Check*/
+
+        DatabaseHandler db = new DatabaseHandler(this);
+        //Log.d("Insert: ", "Inserting ..");
+        //db.addNotification(new NotificationDb(newMessage));
+        Log.d("Reading: ", "Notification Reading all contacts..");
+        List<NotificationDb> notificationDbs = db.getAllContacts();
+
+        int x=0;
+        for (NotificationDb cn : notificationDbs) {
+            //      db.deleteContact(cn);
+            notification_title[x++]=cn.getNotification();
+            String log = "Id: "+cn.getId()+" ,Name: " + cn.getNotification()  ;
+            //  Writing Contacts to log
+            Log.d("Name: ", log+"**"+x);
+
+        }
+
+
+
+
+        int i;
+        for(i=x-1;i>=0;i--) {
+            notification_Items.add(new NotificationItems(notification_title[i]));
+            // notification_Items.add(new NotificationItem("Welcome to Manusys!!"));
+        }
+
+
+
+        notification_adapter = new NotificationListAdapter(this,notification_Items);
+        notification_list= (ListView)findViewById(R.id.list);
+        notification_list.setAdapter(notification_adapter);
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
     private final BroadcastReceiver mHandleMessageReceiver = new BroadcastReceiver() {

@@ -1,13 +1,28 @@
+
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
+
     android:paddingTop="15dp"
     android:descendantFocusability="beforeDescendants"
     android:background="@drawable/rotract_background"
     android:alpha=".9">
+
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+
+
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="349dp"
@@ -48,7 +63,7 @@
 
         <ImageButton
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="200dp"
             android:src="@drawable/party1"
             android:background="@drawable/home_background_selector"
             />
@@ -71,14 +86,29 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/events"
         android:background="@drawable/home_background_selector"
          >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="UPDATES"
+            android:textStyle="bold"
+            android:alpha=".7"
+            android:textColor="@color/abc_primary_text_material_light"
+            android:background="@drawable/home_background_selector"
+            android:id="@+id/textView3"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
         <ListView
+            android:layout_below="@+id/textView3"
             android:id="@+id/list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="400dp"
             android:choiceMode="singleChoice"
             android:divider="@null"
             android:dividerHeight="1dp"
@@ -87,5 +117,7 @@
             </ListView>
 
         </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
 
 </RelativeLayout>
