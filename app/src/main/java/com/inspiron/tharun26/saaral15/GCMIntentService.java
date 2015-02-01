@@ -80,8 +80,13 @@ public class GCMIntentService extends GCMBaseIntentService {
         Log.i(TAG, "Received message");
 
 
+
         String message = intent.getExtras().getString("price");
 
+        if(message=="")
+        {
+         message="Welcome to Saaral'2015";
+        }
 
          storedb(message);
 
