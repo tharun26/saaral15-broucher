@@ -14,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -41,6 +43,9 @@ GCM
 
     ImageButton events;
     ImageButton contacts;
+    ImageButton sponsors,dev;
+    ImageButton guest;
+
 
     private ListView notification_list;
     public static String[] notification_title=new String[50] ;
@@ -49,7 +54,7 @@ GCM
     private NotificationListAdapter notification_adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
@@ -140,6 +145,15 @@ GCM
             }
         });
 
+        guest=(ImageButton)findViewById(R.id.guest_btn1);
+        guest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyActivity.this,guest.class);
+                startActivity(intent);
+            }
+        });
+
         contacts=(ImageButton)findViewById(R.id.contacts);
         contacts.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,6 +163,15 @@ GCM
             }
         });
 
+        /*sponsors=(ImageButton)findViewById(R.id.sponsors);
+        sponsors.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyActivity.this,sponsors.class);
+                startActivity(intent);
+            }
+        });
+    */
 
         ListView lv = (ListView)findViewById(R.id.list);  // your listview inside scrollview
         lv.setOnTouchListener(new ListView.OnTouchListener() {
@@ -214,6 +237,33 @@ GCM
         notification_list= (ListView)findViewById(R.id.list);
         notification_list.setAdapter(notification_adapter);
 
+        ImageButton refresh=(ImageButton)findViewById(R.id.imageButton);
+        refresh.setOnClickListener(new ImageButton.OnClickListener() {
+            @Override
+            public void onClick(View p_v) {
+                // TODO Auto-generated method stub
+                Log.d("hi","hi");
+               // notification_adapter.notifyDataSetChanged();
+                /* Get ImageView Object */
+                ImageButton iv = (ImageButton) findViewById(R.id.imageButton);
+
+/* Create Animation */
+                Animation rotation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_rotate);
+                rotation.setRepeatCount(Animation.INFINITE);
+
+/* start Animation */
+                int i,c=0;
+                iv.startAnimation(rotation);
+
+                for(i=0;i<1000;i++)
+                {
+                    c=c+1;
+                }
+
+
+                onCreate(savedInstanceState);
+            }
+        });
 
 
 

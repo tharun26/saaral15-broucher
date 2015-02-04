@@ -33,7 +33,7 @@ public class contacts extends Activity {
         public MyAdapter(Context context)
         {
             inflater = LayoutInflater.from(context);
-
+/*
             items.add(new Item("Image 1", R.drawable.default_male));
             items.add(new Item("Image 2", R.drawable.defaultfemale));
             items.add(new Item("Image 3", R.drawable.default_male));
@@ -44,6 +44,13 @@ public class contacts extends Activity {
             items.add(new Item("Image 8", R.drawable.default_male));
             items.add(new Item("Image 9", R.drawable.default_male));
             items.add(new Item("Image 10", R.drawable.default_male));
+    */
+
+            items.add(new Item("Image 1", R.drawable.default_male,"Director"));
+            items.add(new Item("Image 2", R.drawable.defaultfemale,"President"));
+
+            items.add(new Item("Image 1", R.drawable.default_male,"Director"));
+            items.add(new Item("Image 2", R.drawable.defaultfemale,"President"));
         }
 
         @Override
@@ -69,21 +76,25 @@ public class contacts extends Activity {
             View v = view;
             ImageView picture;
             TextView name;
+            TextView title;
 
             if(v == null)
             {
                 v = inflater.inflate(R.layout.gridview_item, viewGroup, false);
                 v.setTag(R.id.picture, v.findViewById(R.id.picture));
                 v.setTag(R.id.text, v.findViewById(R.id.text));
+                v.setTag(R.id.text1,v.findViewById(R.id.text1));
             }
 
             picture = (ImageView)v.getTag(R.id.picture);
             name = (TextView)v.getTag(R.id.text);
+           title=(TextView)v.getTag(R.id.text1);
 
             Item item = (Item)getItem(i);
 
             picture.setImageResource(item.drawableId);
             name.setText(item.name);
+            title.setText(item.title);
 
             return v;
         }
@@ -92,11 +103,13 @@ public class contacts extends Activity {
         {
             final String name;
             final int drawableId;
+            final String title;
 
-            Item(String name, int drawableId)
+            Item(String name, int drawableId,String title)
             {
                 this.name = name;
                 this.drawableId = drawableId;
+                this.title=title;
             }
         }
     }

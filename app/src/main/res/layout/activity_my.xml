@@ -40,7 +40,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="220dp"
             android:id="@+id/card"
             android:alpha=".8"
             android:src="@drawable/rotract_international"
@@ -86,11 +86,47 @@
 
     </RelativeLayout>
 
+       <RelativeLayout
+           android:id="@+id/guest"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/events"
+           android:layout_gravity="left|center_vertical"
+
+           android:paddingTop="10dp"
+           android:background="@drawable/home_background_selector"
+           android:weightSum="1"
+           >
+
+           <ImageButton
+               android:id="@+id/guest_btn1"
+               android:layout_width="match_parent"
+               android:layout_height="200dp"
+               android:src="@drawable/redcarpet1"
+               android:cropToPadding="true"
+
+               android:background="@drawable/home_background_selector"
+               />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textAppearance="?android:attr/textAppearanceLarge"
+               android:text="GUEST"
+               android:textStyle="bold"
+               android:alpha=".7"
+               android:background="@drawable/home_background_selector"
+               android:id="@+id/text"
+               android:layout_alignParentTop="true"
+               android:layout_alignParentRight="true"
+               android:layout_alignParentEnd="true" />
+           </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/updates"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/events"
+        android:layout_below="@+id/guest"
         android:background="@drawable/home_background_selector"
         android:padding="10dp"
          >
@@ -108,8 +144,13 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/deep_refresh"
+            android:id="@+id/imageButton"
+            android:background="@null"/>
         <ListView
-            android:layout_below="@+id/textView3"
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="320dp"
@@ -117,7 +158,10 @@
             android:divider="@null"
             android:dividerHeight="1dp"
             android:listSelector="@drawable/home_background_selector"
-            android:background="@drawable/home_background_selector">
+            android:background="@drawable/home_background_selector"
+            android:layout_below="@+id/imageButton"
+            android:layout_alignLeft="@+id/imageButton"
+            android:layout_alignStart="@+id/imageButton">
             </ListView>
 
         </RelativeLayout>

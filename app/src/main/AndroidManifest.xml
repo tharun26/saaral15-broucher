@@ -37,7 +37,7 @@
         android:icon="@drawable/ic_logo"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:theme="@android:style/Theme.Holo.Light" >
+        android:theme="@style/Theme.AppCompat.Light" >
         <activity
             android:name=".MyActivity"
             android:label="@string/app_name" >
@@ -71,6 +71,14 @@
         <activity
             android:name=".contacts"
             android:label="@string/title_activity_contacts" >
+        </activity>
+        <activity
+            android:name=".sponsors"
+            android:label="@string/title_activity_sponsors" >
+        </activity>
+        <activity
+            android:name=".guest"
+            android:label="@string/title_activity_guest" >
         </activity>
     </application>
 
