@@ -40,6 +40,7 @@ GCM
     AsyncTask<Void, Void, Void> mRegisterTask;
 
     ImageButton events;
+    ImageButton contacts;
 
     private ListView notification_list;
     public static String[] notification_title=new String[50] ;
@@ -135,6 +136,15 @@ GCM
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MyActivity.this,Event.class);
+                startActivity(intent);
+            }
+        });
+
+        contacts=(ImageButton)findViewById(R.id.contacts);
+        contacts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyActivity.this,contacts.class);
                 startActivity(intent);
             }
         });
