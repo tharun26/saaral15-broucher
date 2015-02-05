@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.TypedArray;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,7 +44,7 @@ GCM
 
     ImageButton events;
     ImageButton contacts;
-    ImageButton sponsors,dev,developer;
+    ImageButton sponsors,dev,developer,sponsors1;
     ImageButton guest;
 
 
@@ -167,20 +168,32 @@ GCM
         developer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyActivity.this,developer.class);
+                Intent intent = new Intent(MyActivity.this, developer.class);
                 startActivity(intent);
             }
         });
-        /*
-        sponsors=(ImageButton)findViewById(R.id.i2);
+
+        sponsors=(ImageButton)findViewById(R.id.power_btn);
         sponsors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyActivity.this,sponsors.class);
-                startActivity(intent);
+                String url = "http://www.getisteer.com/";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
             }
         });
-        */
+        sponsors1=(ImageButton)findViewById(R.id.i2);
+        sponsors1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "http://www.getisteer.com/";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
+
 
         ListView lv = (ListView)findViewById(R.id.list);  // your listview inside scrollview
         lv.setOnTouchListener(new ListView.OnTouchListener() {
