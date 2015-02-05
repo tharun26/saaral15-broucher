@@ -43,7 +43,7 @@ GCM
 
     ImageButton events;
     ImageButton contacts;
-    ImageButton sponsors,dev;
+    ImageButton sponsors,dev,developer;
     ImageButton guest;
 
 
@@ -163,7 +163,16 @@ GCM
             }
         });
 
-        /*sponsors=(ImageButton)findViewById(R.id.sponsors);
+        developer=(ImageButton)findViewById(R.id.i3);
+        developer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyActivity.this,developer.class);
+                startActivity(intent);
+            }
+        });
+        /*
+        sponsors=(ImageButton)findViewById(R.id.i2);
         sponsors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -171,7 +180,7 @@ GCM
                 startActivity(intent);
             }
         });
-    */
+        */
 
         ListView lv = (ListView)findViewById(R.id.list);  // your listview inside scrollview
         lv.setOnTouchListener(new ListView.OnTouchListener() {

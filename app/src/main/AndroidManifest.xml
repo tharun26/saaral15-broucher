@@ -80,6 +80,10 @@
             android:name=".guest"
             android:label="@string/title_activity_guest" >
         </activity>
+        <activity
+            android:name=".developer"
+            android:label="@string/title_activity_developer" >
+        </activity>
     </application>
 
 </manifest>

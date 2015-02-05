@@ -43,5 +43,6 @@
     <string name="title_activity_contacts">contacts</string>
     <string name="title_activity_sponsors">sponsors</string>
     <string name="title_activity_guest">guest</string>
+    <string name="title_activity_developer">developer</string>
 
 </resources>

@@ -24,7 +24,7 @@ public class guest extends ActionBarActivity {
         // Setup the action bar for tabs
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        actionBar.setTitle("App Title"); // If you want to set an app title
+        actionBar.setTitle("Guests"); // If you want to set an app title
 
         // == Setting up the ViewPager ==
 
@@ -68,7 +68,7 @@ public class guest extends ActionBarActivity {
         };
 
         String[] tabs = {
-                "Mr.Chetan ", "Tab Two", "Tab Three"
+                "Mr.Chetan ", "Mr.Imman & Mr.Adhavan", " Mr.Gnanasambandam"
         };
         ActionBar.Tab tab;
         for (int i = 0; i < tabs.length; i++) {
